@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">{{title}}</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{{#if editMode}}/editRegion{{else}}/createRegion{{/if}}" method="post">
+                        <div class="mb-2">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input id="name" type="text" name="name" value="{{region.name}}" class="form-control" />
+                            {{#if hasNoName}}
+                                <span class="text-danger">* Debes rellenar el campo nombre</span>
+                            {{/if}}
+                        </div>
+                        {{#if editMode}}
+                            <input type="hidden" name="id" value="{{region.id}}" />
+                        {{/if}}
+                        <div class="mt-4">
+                            <a href="/regions" class="btn btn-secondary m-1 float-end">Cancelar</a>
+                            <button type="submit" class="btn btn-primary m-1 float-end">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

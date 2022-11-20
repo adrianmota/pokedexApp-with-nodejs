@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-4 offset-4">
+            <h4 class="text-center bg-white p-2 b-radius"><i>Pokémones</i></h4>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a href="/createPokemon" class="btn btn-ms btn-success w-100">Crear Pokémon</a>
+        </div>
+    </div>
+    <div class="row">
+        {{#if hasPokemon}}
+            {{#each pokemon as |pokemon|}}
+                <div class="col-4 mb-3">
+                    <div class="card shadow-sm" title="{{pokemon.name}}">
+                        <img class="bd-placeholder-img card-img-top pokemon-image-height"
+                            src="{{pokemon.photoUrl}}" />
+                        <hr class="m-0">
+                        <div class="card-body">
+                            <p class="card-text"><strong>{{pokemon.name}}</strong></p>
+                            <p class="card-text">Región: <i>{{pokemon.region.dataValues.name}}</i></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Tipo: {{pokemon.pokemonType.dataValues.name}}</small>
+                                <div class="btn-group">
+                                    <a href="/editPokemon/{{pokemon.id}}?edit=true" class="btn btn-sm btn-outline-secondary">
+                                        <i class="fa fa-pencil"></i> Editar
+                                    </a>
+                                    <a href="/deletePokemon/{{pokemon.id}}" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa fa-trash"></i> Borrar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3 class="text-center">No hay pokemones agregados</h3>
+        {{/if}}
+    </div>
+</div>

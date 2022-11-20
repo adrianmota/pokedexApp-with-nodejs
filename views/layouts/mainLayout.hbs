@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/assets/css/lib/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body>
+    <header>
+        <nav
+            class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black text-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a href="/" class="navbar-brand text-white" title="Home Page">
+                    <img src="/assets/images/pokeball.png" width="30" height="30" alt="pokeball" />
+                    <b>Home</b>
+                </a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item" title="Pokémones">
+                            <a href="/pokemon" class="nav-link text-white">Pokémones</a>
+                        </li>
+                        <li class="nav-item" title="Regiones">
+                            <a href="/regions" class="nav-link text-white">Regiones</a>
+                        </li>
+                        <li class="nav-item" title="Tipos de Pokémones">
+                            <a href="/pokemonTypes" class="nav-link text-white">Tipos de pokémones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main class="pb-3">
+            {{{body}}}
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 offset-2">
+            {{#if canShowForm}}
+                <div class="card">
+                    <div class="card-header bg-dark text-light">
+                        <h3 class="text-center">{{title}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{#if editMode}}/editPokemon{{else}}/createPokemon{{/if}}" method="post">
+                            <div class="mb-2">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input id="name" type="text" name="name" value="{{pokemon.name}}" class="form-control" />
+                                {{#if hasNoName}}
+                                    <span class="text-danger">* Debes rellenar el campo nombre</span>
+                                {{/if}}
+                            </div>
+                            <div class="mb-2">
+                                <label for="photo" class="form-label">Foto</label>
+                                <input id="photo" type="text" name="photoUrl" value="{{pokemon.photoUrl}}"
+                                        class="form-control" />
+                              
+                                {{#if hasNoPhotoUrl}}
+                                    <span class="text-danger">* Debes rellenar el campo foto</span>
+                                {{/if}}
+                            </div>
+                            <div class="mb-2">
+                                <label for="region" class="form-label">Región</label>
+                                <select id="region" name="regionId" class="form-select">
+                                    <option value="" selected>Seleciona una región</option>
+                                    {{#each regions as |region|}}
+                                        {{#if (idsAreEqual region.id ../pokemon.regionId)}}
+                                            <option value="{{region.id}}" selected>{{region.name}}</option>
+                                        {{else}}
+                                            <option value="{{region.id}}">{{region.name}}</option>
+                                        {{/if}}
+                                    {{/each}}
+                                </select>
+                                {{#if hasNoRegion}}
+                                    <span class="text-danger">* Debes seleccionar una región</span>
+                                {{/if}}
+                            </div>
+                            <div class="mb-2">
+                                <label for="pokemonType" class="form-label">Tipo Primario</label>
+                                <select id="pokemonType" name="pokemonTypeId" class="form-select">
+                                    <option value="" selected>Selecciona un tipo primario</option>
+                                    {{#each pokemonTypes as |pokemonType|}}
+                                        {{#if (idsAreEqual pokemonType.id ../pokemon.pokemonTypeId)}}
+                                            <option value="{{pokemonType.id}}" selected>{{pokemonType.name}}</option>
+                                        {{else}}
+                                            <option value="{{pokemonType.id}}">{{pokemonType.name}}</option>
+                                        {{/if}}
+                                    {{/each}}
+                                </select>
+                                {{#if hasNoPokemonType}}
+                                    <span class="text-danger">* Debes seleccionar un tipo de pokemon</span>
+                                {{/if}}
+                            </div>
+                            {{#if editMode}}
+                                <input type="hidden" name="id" value="{{pokemon.id}}" />
+                            {{/if}}
+                            <div class="mt-4">
+                                <a href="/pokemon" class="btn btn-secondary m-1 float-end">Cancelar</a>
+                                <button type="submit" class="btn btn-primary m-1 float-end">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {{else}}
+                <h3>No puedes crear pokemones porque no hay regiones o tipos de pokemon creados</h3>
+            {{/if}}
+        </div>
+    </div>
+</div>

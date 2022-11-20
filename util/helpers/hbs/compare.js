@@ -1,0 +1,1 @@
+exports.idsAreEqual = (id, idFromPokemon) => id == idFromPokemon;

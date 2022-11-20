@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-4 offset-4">
+            <h4 class="text-center bg-white p-2 b-radius"><i>Tipos de Pokémones</i></h4>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a href="/createPokemonType" class="btn btn-success w-100">Crear tipo de pokémon</a>
+        </div>
+    </div>
+    <div class="row">
+        {{#if hasPokemonTypes}}
+            {{#each pokemonTypes as |pokemonType|}}
+                <div class="col-4 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>{{pokemonType.name}}</h4>
+                        </div>
+                        <div class="card-body align-group-end">
+                            <div class="btn-group">
+                                <a href="/editPokemonType/{{pokemonType.id}}?edit=true" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-pencil"></i> Editar
+                                </a>
+                                <a href="/deletePokemonType/{{pokemonType.id}}" class="btn btn-sm btn-outline-danger">
+                                    <i class="fa fa-trash"></i> Borrar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h4 class="text-center">No hay tipos de pokemones agregados</h4>
+        {{/if}}
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-4 offset-8">
+            <div class="align-item-end">
+                <form action="/searchByName" method="post">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <input type="text" name="pokemonName" value="{{pokemonName}}" placeholder="Pikachu"
+                                class="form-control" title="Buscar por nombre" />
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 mb-3 h-355">
+            <div class="card shadow-sm">
+                <div class="card-header bg-black text-white">
+                    <h5>Filtros</h5>
+                </div>
+                <div class="card-body">
+                    <div class="card-header mb-3 p-0 bg-white">
+                        <h6>Regiones</h6>
+                    </div>
+                    <form action="/filter" method="post">
+                        <div class="restrict-size">
+                            <div class="mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" value="" id="all" type="radio" name="regionId" />
+                                    <label class="form-check-label" for="all">Todas
+                                    </label>
+                                </div>
+                            </div>
+                            {{#each regions as |region|}}
+                                <div class="form-check w-100 mb-2">
+                                    <input type="radio" class="form-check-input" id="{{region.id}}" name="regionId"
+                                        value="{{region.id}}" />
+                                    <label for="{{region.id}}" class="form-check-label">{{region.name}}
+                                    </label>
+                                </div>
+                            {{/each}}
+                        </div>
+                        <button class="btn btn-primary w-100" type="submit">Filtrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{#if hasPokemon}}
+            {{#each pokemon as |pokemon|}}
+                <div class="col-4 mb-3">
+                    <div class="card shadow-sm" title="{{pokemon.name}}">
+                        <img class="bd-placeholder-img card-img-top pokemon-image-height" src="{{pokemon.photoUrl}}" />
+                        <hr class="m-0">
+                        <div class="card-body">
+                            <p class="card-text"><strong>{{pokemon.name}}</strong></p>
+                            <p class="card-text">Región: <i>{{pokemon.region.dataValues.name}}</i></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Tipo: {{pokemon.pokemonType.dataValues.name}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3>No se encontraron pokémones</h3>
+        {{/if}}
+    </div>
+</div>

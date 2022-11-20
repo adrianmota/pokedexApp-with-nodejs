@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-4 offset-4">
+            <h4 class="text-center bg-white p-2 b-radius"><i>Regiones</i></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 offset-9 mb-3">
+            <a href="/createRegion" class="btn btn-success w-100">Crear región</a>
+        </div>
+    </div>
+    <div class="row">
+        {{#if hasRegions}}
+            {{#each regions as |region|}}
+                <div class="col-4">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h4>{{region.name}}</h4>
+                        </div>
+                        <div class="card-body align-group-end">
+                            <div class="btn-group">
+                                <a href="/editRegion/{{region.id}}?edit=true" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-pencil"></i> Editar
+                                </a>
+                                <a href="/deleteRegion/{{region.id}}" class="btn btn-sm btn-outline-danger">
+                                    <i class="fa fa-trash"></i> Borrar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h4 class="text-center">No hay regiones agregadas</h4>
+        {{/if}}
+    </div>
+</div>

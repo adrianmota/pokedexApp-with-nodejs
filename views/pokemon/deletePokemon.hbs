@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="card p-0 col-6 offset-3">
+            <div class="card-header">
+                <h4 class="text-center">¿Estás seguro que quieres borrar {{pokemon.name}}?</h4>
+            </div>
+            <div class="card-body">
+                <form action="/deletePokemon" method="post">
+                    <input type="hidden" name="id" value="{{pokemon.id}}"/> 
+                    <button type="submit" class="btn btn-danger">Aceptar</button>
+                    <a href="/pokemon" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
